@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="CDJPlayer.Views.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CDJPlayer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Black"
+    d:DesignHeight="480" d:DesignWidth="640">
+
+    <Grid Name="settingsGrid" Height="480" Visibility="Collapsed">
+        <StackPanel Height="480" Background="Black" VerticalAlignment="Top" Orientation="Vertical">
+            <StackPanel Background="Azure" Height="30" Orientation="Horizontal">
+                <Grid Width="640">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Margin="10,5,0,0" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left">SETTINGS</TextBlock>
+                <Button Grid.Column="1" Background="Blue" HorizontalAlignment="Right" FontWeight="Bold" Click="Button_Click_1">X</Button>
+                </Grid>
+            </StackPanel>
+            <TextBlock Margin="10,5,0,0" Foreground="Azure" FontWeight="Bold">JOG ACCELERATOR TEMPO SPEED</TextBlock>
+            <Slider Name="sliderJogSpeed" Margin="0,10,0,20" Background="AliceBlue" Value="0.09" Maximum="0.15" Minimum="0.01" Width="500"
+                                 Visibility="Visible"  HorizontalAlignment="Center"
+                             ValueChanged="sliderJogSpeed_ValueChanged" />
+            <TextBlock Margin="10,5,0,0" Foreground="Azure" FontWeight="Bold">JOG SENSITIVENESS</TextBlock>
+            <Slider Name="sliderJogSensitiveness" Margin="0,10,0,20" Background="AliceBlue" Value="5" Maximum="20" Minimum="1" Width="500"
+                                 Visibility="Visible"  HorizontalAlignment="Center"
+                             ValueChanged="sliderJogSensitiveness_ValueChanged" />
+            <TextBlock Margin="10,5,0,0" Foreground="Azure" FontWeight="Bold">SeekTime</TextBlock>
+            <Slider Name="sliderSeekTime" Margin="0,10,0,20" Background="AliceBlue" Value="10" Maximum="30" Minimum="10" Width="500"
+                                 Visibility="Visible"  HorizontalAlignment="Center"
+                             ValueChanged="sliderSeekTime_ValueChanged" />
+            <TextBlock Margin="10,5,0,0" Foreground="Azure" FontWeight="Bold">SeekTimePaused</TextBlock>
+            <Slider Name="sliderTimeSeek" Margin="0,10,0,20" Background="AliceBlue" Value="100" Maximum="500" Minimum="1" Width="500"
+                                 Visibility="Visible"  HorizontalAlignment="Center"
+                                  ValueChanged="sliderTimeSeek_ValueChanged" />
+            
+            <TextBlock Margin="10,5,0,0" Foreground="Azure" FontWeight="Bold">Player number: </TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                <RadioButton x:Name="cdOne" Margin="5" Checked="HandleCheck" GroupName="player" Content="1" />
+                <RadioButton x:Name="cdTwo" Margin="5" Checked="HandleCheck" GroupName="player" Content="2" />
+                <RadioButton x:Name="cdTree" Margin="5" Checked="HandleCheck" GroupName="player" Content="3" />
+                <RadioButton x:Name="cdFour" Margin="5" Checked="HandleCheck" GroupName="player" Content="4" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <TextBlock Foreground="Wheat" Margin="10,0,0,0">v 1.0 beta</TextBlock>
+            <Button Margin="10,10,10,10" HorizontalAlignment="Right" Click="Button_Click">DEFAULT</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

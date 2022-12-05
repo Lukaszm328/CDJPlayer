@@ -1,0 +1,219 @@
+﻿<UserControl
+    x:Class="CDJPlayer.Views.PlayerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CDJPlayer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="145"
+    d:DesignWidth="640">
+
+    <Grid>
+        <StackPanel>
+            <!-- Player information ( time, pitch etc. ) -->
+            <StackPanel Name="playerStackPanel" BorderBrush="White" Height="55" Margin="0,0,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1.1*" />
+                        <ColumnDefinition Width="0.9*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="1.7*" />
+                        <ColumnDefinition Width="1.53*" />
+                    </Grid.ColumnDefinitions>
+                    <Border BorderThickness="1.5" Grid.Column="0" CornerRadius="3" BorderBrush="White" Margin="5,0,2,3"  >
+                        <!-- PLAYER -->
+                        <StackPanel Grid.Column="0" Tapped="StackPanel_Tapped">
+                            <TextBlock Text="PLAYER" Margin="-1,3,0,0" HorizontalAlignment="Center" Foreground="White" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="9.5" />
+                            <TextBlock Name="playerNumber" Text="1" FontSize="34" Margin="0,-2,2,0" Foreground="White"  HorizontalAlignment="Center" FontFamily="Clarendon Blk BT" FontWeight="Bold" Height="34"/>
+                        </StackPanel>
+                    </Border>
+                    <!-- TRACK -->
+                    <StackPanel Grid.Column="1">
+                        <StackPanel Margin="0,4,0,0">
+                            <TextBlock Name="trackIdTitle" Grid.Column="1" HorizontalAlignment="Center" Margin="0,-6" Text="SINGLE" FontSize="12" Foreground="White" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std"  />
+                            <TextBlock Name="TrackId" Margin="0,-1,0,-3" Grid.Column="1" Text="00" HorizontalAlignment="Center" FontSize="55" Foreground="White" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7" Height="47"  />
+                        </StackPanel>
+                    </StackPanel>
+                    <!-- Icons -->
+                    <StackPanel Grid.Column="2" Margin="0,0,0,0" Padding="0,6,0,0">
+                        <!-- PLAY/PAUSE -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Polygon Name="playControll" Points="2,1 20,10 2,20" Fill="Blue" HorizontalAlignment="Center" Opacity="0.2" />
+                            <StackPanel Name="pauseControll" Orientation="Horizontal" Opacity="0.2" Margin="3,0,0,0">
+                                <Line  X1="3" Y1="2" X2="3" Y2="18" Stroke="Blue" StrokeThickness="5" />
+                                <Line  X1="8" Y1="2" X2="8" Y2="18" Stroke="Blue" StrokeThickness="5" />
+                            </StackPanel>
+                        </StackPanel>
+                        <!-- AUTO CUE -->
+                        <StackPanel x:Name="autCueControll" Width="45" Opacity="0.2" Margin="4,8,0,0">
+                            <Border BorderThickness="2" BorderBrush="Red" CornerRadius="3">
+                                <TextBlock Text="A.CUE" Foreground="Red" Margin="2,0,2,1" HorizontalAlignment="Center" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="9" FontWeight="ExtraBold"/>
+                            </Border>
+                        </StackPanel>
+                        <!--<TextBlock Text="CUE" FontSize="13" Margin="3,-4,0,0" Opacity="0.5" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center"/>-->
+
+                    </StackPanel>
+                    <Grid Grid.Column="3" Margin="0,0,18,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2.5*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="REMAIN" Foreground="White" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="10" Margin="7,-2,0,0"/>
+                        <!-- Min -->
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" Width="78" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,3,0,0">
+                            <TextBlock Name="timeTrackMinFirstZero" VerticalAlignment="Bottom" Grid.Column="0" Width="25" FontSize="56" Margin="0,1,0,-6" Foreground="White" FontWeight="Light" HorizontalAlignment="Right" Text="0" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7"/>
+                            <TextBlock Name="timeTrackMinSecondZero" VerticalAlignment="Bottom" Grid.Column="0" Width="25" FontSize="56" Margin="0,1,0,-6" Foreground="White" HorizontalAlignment="Right" Text="0" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7" FontWeight="Normal"/>
+                            <TextBlock Text="m" VerticalAlignment="Bottom" Margin="0,0,0,-1" Foreground="White" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="19" />
+                            <TextBlock Text=":" VerticalAlignment="Center" Margin="2,0,2,0" Foreground="White" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="25" />
+                        </StackPanel>
+                        <!-- Seconds -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Width="63" HorizontalAlignment="Center">
+                            <TextBlock Name="timeTrackSecondsFirstZero" FontSize="56" Margin="0,5,0,-5" Width="25" Foreground="White" HorizontalAlignment="Center" Text="0" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7"/>
+                            <TextBlock Name="timeTrackSecondsSecondZero" FontSize="56" Width="25" Margin="0,5,0,-5" Foreground="White" HorizontalAlignment="Center" Text="0" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7"/>
+                            <TextBlock Text="s" VerticalAlignment="Bottom" Margin="1,0,0,-1"  Foreground="White" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="19" />
+                        </StackPanel>
+                        <!-- Milisceconds -->
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Width="85" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Name="timeTrackMilisecondsFirstZero" FontSize="56" Margin="2,6,0,-5" Width="25" Foreground="White" HorizontalAlignment="Center" Text="0" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7"/>
+                            <TextBlock Name="timeTrackMilisecondsSecondZero" FontSize="56" Margin="2,6,0,-5" Width="25" Foreground="White" HorizontalAlignment="Center" Text="0" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7"/>
+                            <!--<TextBlock Name="timeTrackMilisecondsLastZero" FontSize="34" Margin="2,24,0,0" Foreground="White" Text="0" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7"/>-->
+                            <TextBlock Text="F" VerticalAlignment="Bottom" Margin="0,0,0,1" Foreground="White" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="15" />
+                        </StackPanel>
+                    </Grid>
+                    <!-- Tempo -->
+                    <TextBlock Name="tempoTrackTitle" Grid.Column="4" Text="TEMPO" Margin="0,-3" FontSize="12" Foreground="White" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std"  />
+                    <TextBlock Name="tempoTrack" Grid.Column="4" Margin="0,17,5,0" Text="+00.0%" FontSize="41" Foreground="White" HorizontalAlignment="Right" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7" FontWeight="Normal" />
+                    <Border BorderThickness="1.5" Grid.Column="6" CornerRadius="3" BorderBrush="#FFFFFF" Margin="3,0,3,3"  >
+                        <StackPanel Grid.Column="6">
+                            <StackPanel Orientation="Horizontal" Height="32" Margin="0,4,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock  Name="bmpTrack" Text="" Margin="3,-5,1,0" Foreground="#FFFFFF" FontFamily="/Assets/Fonts/digital-7.ttf#Digital-7" FontSize="40" FontWeight="Normal" Height="37" />
+                            </StackPanel>
+
+                            <StackPanel Background="Black" Margin="0,0,0,0" Width="88.5" Height="15" >
+                                <TextBlock Text="BPM" FontSize="12" Margin="0,-1,4,0" FontWeight="Bold"  Foreground="White"  HorizontalAlignment="Right" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+
+            <!-- Search track, current positionand Wave Renderer -->
+            <StackPanel Name="waveTrackStackPanel" Margin="0,0,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="16*"  />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- POINTS HOT CUE, CUE -->
+                    <StackPanel Grid.Column="0" Name="Cues">
+                        <!-- MEMORY -->
+                        <StackPanel Margin="0,12,0,0">
+                            <Polyline Points="4,19.5 ,4,1 62,1,57 19,4,19," Stroke="Red" StrokeThickness="1"/>
+                            <TextBlock Text="MEMORY" Margin="4,-17,0,0" FontSize="10" Foreground="Red" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std"/>
+                        </StackPanel>
+                        <!-- CUE -->
+                        <StackPanel VerticalAlignment="Bottom" Margin="0,32,0,0">
+                            <Polyline Points="4,19.5 ,4,1 57,1,62 19,4,19," VerticalAlignment="Bottom" Stroke="Red" StrokeThickness="1"/>
+                            <TextBlock Text="CUE" Margin="10,-19,0,0" FontSize="13" Foreground="Red" FontFamily="/Assets/Fonts/SackersGothicStd-Medium.otf#Sackers Gothic Std"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <!-- IF NOT LOADED-->
+                        <TextBlock Name="notLoadedLabel" Grid.Column="1" Visibility="Visible" Text="NOT LOADED" Margin="0,34,0,0" VerticalAlignment="Center" FontWeight="Black" Foreground="Red" HorizontalAlignment="Center" FontFamily="Bahnschrift" FontSize="20" />
+                        <!-- IF OPENED SONG -->
+                        <TextBlock Name="loadingWaveLabel" Grid.Column="1" Visibility="Collapsed" RelativePanel.Below="sliderTimePositioSong"  Text="PROCESSING" Margin="0,26,0,32" VerticalAlignment="Center" FontWeight="Black" Foreground="Red" HorizontalAlignment="Center" FontFamily="Assets/Fonts/digital-7.ttf#Digital-7"  FontSize="20" />
+
+                        <Canvas x:Name="pointsCanvasTop" Width="500"  Margin="4,2,0,0" HorizontalAlignment="Left">
+                            <Polygon Name="cuePointCanvasTop" Margin="0,0,0,0"  
+                                 Stroke="Yellow"
+                                 StrokeThickness="1">
+                                <Polygon.Fill>
+                                    <SolidColorBrush Color="Yellow" Opacity="1"/>
+                                </Polygon.Fill>
+                            </Polygon>
+
+                            <Polygon Name="cueAPointCanvasTop" Margin="0,0,0,0"  
+                                 Stroke="Green"
+                                 StrokeThickness="1">
+                                <Polygon.Fill>
+                                    <SolidColorBrush Color="Green" Opacity="1"/>
+                                </Polygon.Fill>
+                            </Polygon>
+
+                            <Polygon Name="cueBPointCanvasTop" Margin="0,0,0,0"  
+                                 Stroke="Blue"
+                                 StrokeThickness="1">
+                                <Polygon.Fill>
+                                    <SolidColorBrush Color="Green" Opacity="1"/>
+                                </Polygon.Fill>
+                            </Polygon>
+
+                            <Polygon Name="cueCPointCanvasTop" Margin="0,0,0,0"  
+                                 Stroke='Cyan'
+                                 StrokeThickness="1">
+                                <Polygon.Fill>
+                                    <SolidColorBrush Color="Green" Opacity="1"/>
+                                </Polygon.Fill>
+                            </Polygon>
+                        </Canvas>
+
+                        <Canvas Name="waveformSmall" Background="Black" Width="500" Height="60" Visibility="Visible"
+                               Margin="5,10,0,7" HorizontalAlignment="Left" >
+                        </Canvas>
+
+                        <Slider Name="sliderTimePositioSong"  Style="{StaticResource TimerSlider}" Value="0" Width="500"
+                                 Visibility="Collapsed" Margin="4,-26,0,0" HorizontalAlignment="Left"
+                                 VerticalAlignment="Bottom"  />
+
+                        <Canvas Height="13" Name="pointsCanvasBottom" HorizontalAlignment="Left" Margin="4,-23,0,0" Visibility="Collapsed" Width="500">
+
+                            <Line 
+                            X1="100" Y1="10"
+                            X2="100" Y2="0"
+                            Stroke="White"
+                            StrokeThickness="2" />
+
+                            <Line 
+                            X1="200" Y1="10"
+                            X2="200" Y2="0"
+                            Stroke="White"
+                            StrokeThickness="2" />
+
+                            <Line 
+                            X1="300" Y1="10"
+                            X2="300" Y2="0"
+                            Stroke="White"
+                            StrokeThickness="2" />
+
+                            <Line 
+                            X1="400" Y1="10"
+                            X2="400" Y2="0"
+                            Stroke="White"
+                            StrokeThickness="2" />
+
+                            <Polygon Name="cuePointCanvasBottom" Margin="0,0,0,0"  
+                                 Stroke="Yellow"
+                                 StrokeThickness="1">
+                                <Polygon.Fill>
+                                    <SolidColorBrush Color="Yellow" Opacity="1"/>
+                                </Polygon.Fill>
+                            </Polygon>
+
+                        </Canvas>
+                    </StackPanel>
+
+                    <!-- TEMPO RANGE -->
+                    <StackPanel Name="tempoRange" Margin="0,7,0,0" Grid.Column="2"/>
+
+                </Grid>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="wavesurfer.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+
+<body style="background-color:black">
+
+    <div id="waveform" ></div>
+
+    <script>
+        function LoadWaveform(json) {
+            $( "#waveform" ).empty();
+            var wavesurfer = WaveSurfer.create({
+                // Use the id or class-name of the element you created, as a selector
+                container: '#waveform',
+                // The color can be either a simple CSS color or a Canvas gradient
+                waveColor: 'blue',
+                progressColor: 'hsla(200, 100%, 30%, 0.5)',
+                cursorColor: 'Black',
+                // This parameter makes the waveform look like SoundCloud's player
+                barWidth: 1,
+              //  hideScrollbar: true,
+            //    partialRender: true,
+                barHeight: 1,
+                //maxCanvasWidth: 10,
+                splitChannels: false,
+            });
+            wavesurfer.loadBlob(new window.Blob([new Uint8Array(JSON.parse(json))]));
+        }
+
+        function GetAduioData(json) {
+
+            const params = {
+                waveColor: 'blue',
+                progressColor: 'purple',
+                barHeight: 1,
+                barWidth: 1,
+                splitChannels: true
+            };
+
+            const wavesurfer = WaveSurfer.create(params);
+            wavesurfer.loadBlob(new window.Blob([new Uint8Array(JSON.parse(json))]));
+
+            return wavesurfer.exportImage('image/jpeg', 1, 'blob');
+        }
+
+        function hel(ss) {
+            return "hello";
+        }
+
+    </script>
+
+</body>
+</html>

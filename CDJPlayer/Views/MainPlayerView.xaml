@@ -1,0 +1,102 @@
+﻿<UserControl
+    x:Class="CDJPlayer.Views.MainPlayerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CDJPlayer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="60"
+    d:DesignWidth="640">
+
+    <Grid>
+        <StackPanel>
+            <!-- Player information ( time, pitch etc. ) -->
+            <StackPanel Name="playerStackPanel" BorderBrush="White" Height="55" Margin="0,1,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="1.6*" />
+                        <ColumnDefinition Width="1.53*" />
+                    </Grid.ColumnDefinitions>
+                    <Border BorderThickness="1.5" Grid.Column="0" CornerRadius="3" BorderBrush="White" Margin="5,0,2,2"  >
+                        <!-- PLAYER -->
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="PLAYER" Margin="-1,3,0,0" HorizontalAlignment="Center" Foreground="White" FontFamily="Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="10" />
+                            <TextBlock Text="1" FontSize="27" Margin="0,0,2,0" Foreground="White"  HorizontalAlignment="Center" FontFamily="Assets/digital-7.ttf#Digital-7"/>
+                        </StackPanel>
+                    </Border>
+                    <!-- TRACK -->
+                    <StackPanel Grid.Column="1">
+                        <StackPanel Margin="0,4,0,0">
+                            <TextBlock Name="trackIdTitle" Grid.Column="1" HorizontalAlignment="Center" Margin="0,-6" Text="TRACK" FontSize="13" Foreground="White" FontFamily="Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std"  />
+                            <TextBlock Name="TrackId" Margin="0,12,0,-3" Grid.Column="1" Text="000" HorizontalAlignment="Center" FontSize="33" Foreground="White" FontFamily="Assets/digital-7.ttf#Digital-7" Height="28"  />
+                        </StackPanel>
+                    </StackPanel>
+                    <!-- Icons -->
+                    <StackPanel Grid.Column="2" Margin="0,0,0,0" Padding="0,6,0,0">
+                        <!-- PLAY/PAUSE -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Polygon Points="2,1 20,10 2,20" Fill="Blue" HorizontalAlignment="Center" Opacity="0.5" />
+                            <StackPanel Orientation="Horizontal" Opacity="0.5" Margin="3,0,0,0">
+                                <Line  X1="3" Y1="2" X2="3" Y2="18" Stroke="Blue" StrokeThickness="5" />
+                                <Line  X1="8" Y1="2" X2="8" Y2="18" Stroke="Blue" StrokeThickness="5" />
+                            </StackPanel>
+                        </StackPanel>
+                        <!-- AUTO CUE -->
+                        <StackPanel Width="45" Opacity="0.5" Margin="4,10,0,0">
+                            <Border BorderThickness="2" BorderBrush="Red" CornerRadius="3">
+                                <TextBlock Text="A.CUE" Foreground="Red" Margin="2,0,2,1" HorizontalAlignment="Center" FontFamily="Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="9" FontWeight="ExtraBold"/>
+                            </Border>
+                        </StackPanel>
+                        <!--<TextBlock Text="CUE" FontSize="13" Margin="3,-4,0,0" Opacity="0.5" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center"/>-->
+
+                    </StackPanel>
+                    <Grid Grid.Column="3" Margin="0,0,18,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2.4*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="REMAIN" Foreground="White" FontFamily="Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="11" Margin="8,-2,0,0"/>
+                        <!-- Min -->
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" Width="78" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,3,0,0">
+                            <TextBlock Name="timeTrackMin" VerticalAlignment="Bottom" Grid.Column="0" FontSize="40" Margin="0,1,0,-6" Foreground="White" HorizontalAlignment="Right" Text="00" FontFamily="Assets/digital-7.ttf#Digital-7"/>
+                            <TextBlock Text="m" VerticalAlignment="Bottom" Margin="0,0,0,-3" Foreground="White" FontFamily="/Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="19" />
+                            <TextBlock Text=":" VerticalAlignment="Center" Margin="2,0,2,0" Foreground="White" FontFamily="/Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="25" />
+                        </StackPanel>
+                        <!-- Seconds -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Width="60" HorizontalAlignment="Center">
+                            <TextBlock Name="timeTrackSeconds" FontSize="50" Margin="0,5,0,-5" Foreground="White" HorizontalAlignment="Center" Text="00" FontFamily="/Assets/digital-7.ttf#Digital-7"/>
+                            <TextBlock Text="s" VerticalAlignment="Bottom" Margin="0,0,0,-3" Foreground="White" FontFamily="/Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="19" />
+                        </StackPanel>
+                        <!-- Milisceconds -->
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Width="85" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Name="timeTrackMiliseconds" FontSize="50" Margin="2,6,0,-5" Foreground="White" HorizontalAlignment="Center" Text="00." FontFamily="Digital-7"/>
+                            <TextBlock Name="timeTrackMilisecondsZero" FontSize="32" Margin="0,21,0,0" Foreground="White" HorizontalAlignment="Center" Text="0" FontFamily="/Assets/digital-7.ttf#Digital-7"/>
+                            <TextBlock Text="F" VerticalAlignment="Bottom" Margin="0,0,0,1" Foreground="White" FontFamily="/Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std" FontSize="15" />
+                        </StackPanel>
+                    </Grid>
+                    <!-- Tempo -->
+                    <TextBlock Name="tempoTrackTitle" Grid.Column="4" Text="TEMPO" Margin="0,-3" FontSize="13" Foreground="White" FontFamily="/Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std"  />
+                    <TextBlock Name="tempoTrack" Grid.Column="4" Margin="0,21,5,0" Text="+00.0%" FontSize="33" Foreground="White" HorizontalAlignment="Right" FontFamily="Assets/digital-7.ttf#Digital-7" FontWeight="Normal" />
+                    <Border BorderThickness="1.5" Grid.Column="6" CornerRadius="3" BorderBrush="#FFFFFF" Margin="3,0,3,2"  >
+                        <StackPanel Grid.Column="6">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock  Name="bmpTrack" Text="000." Margin="4,-3,1,0" HorizontalAlignment="Right" Foreground="#FFFFFF" FontFamily="/Assets/digital-7.ttf#Digital-7" FontSize="40" FontWeight="Normal" />
+                                <TextBlock  Name="bmpTrack2" Text="0" Margin="-1,-1,0,0" Foreground="#FFFFFF" FontFamily="Assets/digital-7.ttf#Digital-7" FontSize="30" FontWeight="Normal" Height="27" />
+                            </StackPanel>
+
+                            <StackPanel Background="#FFFFFF" Margin="-1,-3,0,0" Width="88.5" Height="15" >
+                                <TextBlock Text="BPM" FontSize="12" Margin="0,0,4,0" FontWeight="Bold"  Foreground="Black"  HorizontalAlignment="Center" FontFamily="/Assets/SackersGothicStd-Medium.otf#Sackers Gothic Std"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

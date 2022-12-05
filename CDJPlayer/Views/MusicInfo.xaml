@@ -1,0 +1,92 @@
+﻿<UserControl
+    x:Class="CDJPlayer.Views.MusicInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CDJPlayer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
+    mc:Ignorable="d"
+    d:DesignHeight="430"
+    d:DesignWidth="200">
+    <Grid BorderBrush="#adadad" BorderThickness="4,0,0,0">
+        <Grid Name="trackContainer" Padding="5" Height="290" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#adadad" Offset="0.0" />
+                    <GradientStop Color="White" Offset="0.15" />
+                    <GradientStop Color="#adadad" Offset="0.955" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Border Grid.Row="0" BorderBrush="#adadad" BorderThickness="0,0,0,1">
+                <StackPanel  Orientation="Horizontal">
+                    <!--<TextBlock Text="&#xf007;" FontFamily="{StaticResource FontAwesome}" Foreground="#54575c" FontSize="22"  VerticalAlignment="Center"></TextBlock>-->
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Foreground="#54575c" FontSize="20" Margin="0,0,5,0" FontWeight="Normal" Glyph="&#xE8D4;"/>
+                    <TextBlock x:Name="artist" Foreground="Black" VerticalAlignment="Center" FontSize="15" FontFamily="/Assets/Fonts/IBMPlexSans-Regular.ttf#IBM Plex Sans"></TextBlock>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" BorderBrush="#adadad" BorderThickness="0,0,0,1">
+                <StackPanel  Orientation="Horizontal">
+                    <!--<TextBlock Text="&#xf8d9y;" FontFamily="{StaticResource FontAwesome}" Foreground="#54575c" FontSize="22"  VerticalAlignment="Center"></TextBlock>-->
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Foreground="#54575c" FontSize="20" Margin="0,0,5,0" FontWeight="Normal" Glyph="&#xE93C;"/>
+                    <TextBlock x:Name="album" Foreground="Black" VerticalAlignment="Center" FontSize="15" FontFamily="/Assets/Fonts/IBMPlexSans-Regular.ttf#IBM Plex Sans"></TextBlock>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="2" BorderBrush="#adadad" BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Foreground="#54575c" FontSize="17" Margin="0,0,5,0" FontWeight="Normal" Glyph="&#xEC92;"/>
+                    <TextBlock x:Name="year" Foreground="Black" VerticalAlignment="Center" FontSize="15" FontFamily="/Assets/Fonts/IBMPlexSans-Regular.ttf#IBM Plex Sans"></TextBlock>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="3" BorderBrush="#adadad" BorderThickness="0,0,0,1">
+                <StackPanel Grid.Row="3" Orientation="Horizontal">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Foreground="#54575c" FontSize="17" Margin="0,0,5,0"  FontWeight="Normal" Glyph="&#xE707;"/>
+                    <TextBlock x:Name="bpm" Foreground="Black" VerticalAlignment="Center" FontSize="15" FontFamily="/Assets/Fonts/IBMPlexSans-Regular.ttf#IBM Plex Sans"></TextBlock>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="4" BorderBrush="#adadad" BorderThickness="0,0,0,1">
+                <StackPanel Grid.Row="4" Orientation="Horizontal">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Foreground="#54575c" FontSize="17" Margin="0,0,5,0" FontWeight="Normal" Glyph="&#xE823;"/>
+                    <TextBlock x:Name="duration" Foreground="Black" VerticalAlignment="Center" FontSize="15" FontFamily="/Assets/Fonts/IBMPlexSans-Regular.ttf#IBM Plex Sans"></TextBlock>
+                </StackPanel>
+            </Border>
+            <StackPanel Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel BorderBrush="#adadad" Background="#E5F3F6" Margin="0,4,0,0" BorderThickness="2" >
+                    <Image Name="artwork" Width="130" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Name="folderContainer" Height="290" Background="#E5F3F6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock  Text="Folder" FontSize="20" Foreground="Black" />
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Image Source="/Assets/Images/folder_ico.png" Height="140"/>
+            </StackPanel>
+        </Grid>
+        <Grid Name="driveContainer" Height="280" Background="#E5F3F6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock  Text="Drive" FontSize="20" Foreground="Black" />
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Image Source="/Assets/Images/drive_icon.png" Height="140"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

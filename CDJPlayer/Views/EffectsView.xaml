@@ -1,0 +1,94 @@
+﻿<UserControl
+    x:Class="CDJPlayer.Views.EffectsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DjPlayer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="110"
+    d:DesignWidth="220">
+
+    <Grid>
+        <!-- EFX -->
+        <StackPanel Name="efxMode" Background="Black" Height="90" HorizontalAlignment="Left" Margin="7,9,0,0" Width="210" Visibility="Visible" CornerRadius="5" BorderThickness="1" BorderBrush="AliceBlue" >
+            <StackPanel Height="18" Background="White" VerticalAlignment="Center">
+                <TextBlock Text="Effects" Foreground="Black" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <!-- MODE -->
+                <StackPanel Grid.Column="0">
+                    <!-- LOOP -->
+                    <StackPanel x:Name="EffectLoopMode" Background="Blue" Margin="5,7,0,0" CornerRadius="3" BorderBrush="Wheat" BorderThickness="2">
+                        <TextBlock Text="LOOP" Foreground="White" FontSize="15"  HorizontalAlignment="Center" FontFamily="Assets/digital-7.ttf#Digital-7" />
+                    </StackPanel>
+                    <!-- CUE -->
+                    <StackPanel x:Name="EffectCueMode" Background="DarkBlue" Margin="5,3,0,0" CornerRadius="3" BorderBrush="Wheat" BorderThickness="0">
+                        <TextBlock Text="CUE" Foreground="White" FontSize="15"  HorizontalAlignment="Center" FontFamily="Assets/digital-7.ttf#Digital-7" />
+                    </StackPanel>
+                    <!-- EFX -->
+                    <StackPanel x:Name="EffectsMode" Background="DarkBlue" Margin="5,3,0,3" CornerRadius="3" BorderBrush="Wheat" BorderThickness="0">
+                        <TextBlock Text="EFX" Foreground="White" FontSize="15"  HorizontalAlignment="Center" FontFamily="Assets/digital-7.ttf#Digital-7" />
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- EFFECT PARAMETERS -->
+
+                <!-- LOOP -->
+                <StackPanel Grid.Column="1" Name="loopEffectView" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,8">
+                    <!-- BUTTON 1 -->
+                    <StackPanel Name="loopEffectIN" Background="Black" BorderBrush="OrangeRed" BorderThickness="3" Margin="0,0,6,0" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="IN" Margin="0,9" Foreground="Wheat" FontSize="18" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <!-- BUTTON 2 -->
+                    <StackPanel Name="loopEffectOUT" Background="Black"  BorderBrush="OrangeRed" BorderThickness="3" Margin="0,0,6,0" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="OUT" Margin="0,9" Foreground="Wheat" FontSize="16" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <!-- BUTTON 3 -->
+                    <StackPanel Background="Black"  BorderBrush="OrangeRed" BorderThickness="3" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="EXIT" Margin="0,8" Foreground="Wheat" FontSize="17" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- HOT CUE -->
+                <StackPanel Grid.Column="1" Visibility="Collapsed" Name="cueEffectView" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,8">
+                    <!-- BUTTON 1 -->
+                    <StackPanel Name="cueEffect1" Background="Black" BorderBrush="OrangeRed" BorderThickness="3" Margin="0,0,6,0" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="A" Margin="0,8" Foreground="Wheat" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <!-- BUTTON 2 -->
+                    <StackPanel Name="cueEffect2" Background="Black"  BorderBrush="OrangeRed" BorderThickness="3" Margin="0,0,6,0" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="B" Margin="0,8" Foreground="Wheat" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <!-- BUTTON 3 -->
+                    <StackPanel Name="cueEffect3" Background="Black"  BorderBrush="OrangeRed" BorderThickness="3" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="C" Margin="0,8" Foreground="Wheat" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>  
+                </StackPanel>
+
+                <!-- EFX -->
+                <StackPanel Grid.Column="1" Visibility="Collapsed" Name="efxEffectView" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,8">
+                    <!-- BUTTON 1 -->
+                    <StackPanel Name="efxEffect1" Background="Black" BorderBrush="OrangeRed" BorderThickness="3" Margin="0,0,6,0" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="ECHO" Margin="0,10" Foreground="Wheat" FontSize="15" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <!-- BUTTON 2 -->
+                    <StackPanel Name="efxEffect2" Background="Black"  BorderBrush="OrangeRed" BorderThickness="3" Margin="0,0,6,0" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="JET" Margin="0,10" Foreground="Wheat" FontSize="15" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <!-- BUTTON 3 -->
+                    <StackPanel Name="efxEffect3" Background="Black"  BorderBrush="OrangeRed" BorderThickness="3" CornerRadius="50" Height="50" Width="45">
+                        <TextBlock Text="MIX" Margin="0,10" Foreground="Wheat" FontSize="15" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+
+
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

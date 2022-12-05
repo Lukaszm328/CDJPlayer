@@ -1,0 +1,44 @@
+﻿<UserControl
+    x:Class="CDJPlayer.Views.FilesBrowserView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CDJPlayer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="640">
+
+    <Grid Name="mainGrid" BorderBrush="#22A2E4" Height="290" BorderThickness="2,0,2,2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="col1" Width="*" />
+            <ColumnDefinition x:Name="col2" Width="0*" />
+        </Grid.ColumnDefinitions>
+        <!-- Files Browser -->
+        <ListView Name="fileBrowser" SelectionMode="Single" Grid.Column="0" IsItemClickEnabled="True" SelectionChanged="fileBrowser_SelectionChanged" Visibility="Visible" ItemClick="BrowserDrive_ItemClick"  ItemsSource="{Binding DriveInfoUSBList}" SelectedIndex="0"  ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="0" Margin="0,0,0,0" Height="280">
+            <ListView.ItemTemplate >
+                <DataTemplate >
+                    <Grid x:Name="gridFileBrowser" Width="640"  Margin="-12,0,-12,0" Padding="0,0,0,0" BorderBrush="#3da9fc" BorderThickness="0,0,0,0.5" Height="58">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="col1" Width="0.8*"/>
+                            <ColumnDefinition x:Name="col2" Width="09*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding PicturePath}" Width="28" Height="28"
+                                HorizontalAlignment="Left" Grid.Column="0" VerticalAlignment="Center" Margin="8,0,0,5"/>
+                        <!--<TextBlock Text="{Binding PathDrive}" HorizontalAlignment="Center" Foreground="White" FontFamily="/Assets/Fonts/Teko-Regular.ttf#Teko" FontSize="14" 
+                                Grid.Column="1" VerticalAlignment="Center"/>-->
+                        <TextBlock Text="{Binding DescriptionDrive}" HorizontalAlignment="Left" Margin="4,0,0,0" FontWeight="Bold" Padding="0" FontFamily="Bahnschrift SemiLight Condensed" Foreground="#edf0f5" FontSize="15"   TextWrapping="Wrap" 
+                                Grid.Column="2" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding TotalSpaceDrive}" HorizontalAlignment="Right" Foreground="White" Margin="0,0,120,0" FontSize="14" 
+                                Grid.Column="2" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding FreeSpaceDrrive}" HorizontalAlignment="Right" Foreground="White" FontSize="14" 
+                                Grid.Column="2" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Column="1" x:Name="musicInfoView" Visibility="Visible">
+        </StackPanel>
+    </Grid>
+</UserControl>

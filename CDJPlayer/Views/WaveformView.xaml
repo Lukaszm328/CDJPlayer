@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="CDJPlayer.Views.WaveformView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CDJPlayer.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="160"
+    d:DesignWidth="640">
+
+    <Grid>
+        <!-- Wave -->
+        <Canvas Name="wavesView" Height="160" Width="640" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible">
+            <Line 
+                        X1="1" Y1="80"
+                        X2="640" Y2="80"
+                        Stroke="Blue"
+                        StrokeThickness="2" />
+            <Line HorizontalAlignment="Center" VerticalAlignment="Center"
+                        X1="320" Y1="10"
+                        X2="320" Y2="150"
+                        Stroke="White"
+                        StrokeThickness="2" />
+        </Canvas>
+    </Grid>
+</UserControl>

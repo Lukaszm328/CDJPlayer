@@ -25,7 +25,7 @@ namespace CDJPlayer.Views
         private string playingFilePath;
         private bool musicInfoVisibility = true;
         private MusicInfo musicInfo = new MusicInfo();
-        private BrowserViewMode _browserViewMode;
+        public BrowserViewMode _browserViewMode;
 
         public FilesBrowserView(TopPanelView topPanelView, PlayerView playerView, EffectsViewFull effectsView)
         {

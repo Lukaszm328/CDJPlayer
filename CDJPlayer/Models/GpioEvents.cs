@@ -271,19 +271,19 @@ namespace CDJPlayer.Models
             {
                 if (e.Edge == GpioPinEdge.FallingEdge)
                 {
-               _filesBrowserView.LoadNextFile(); // sprawdzić bez async
+                    _filesBrowserView.LoadNextFile(); // sprawdzić bez async
                 }
             });
         }
 
         // Button BACK SONG
-        private  void ButtonBack_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs e)
+        private void ButtonBack_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs e)
         {
             var task = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 if (e.Edge == GpioPinEdge.FallingEdge)
                 {
-                  _filesBrowserView.LoadPreviousFile();
+                    _filesBrowserView.LoadPreviousFile();
                 }
             });
         }
@@ -311,7 +311,7 @@ namespace CDJPlayer.Models
             {
                 if (e.Edge == GpioPinEdge.FallingEdge)
                 {
-                _filesBrowserView.BackFolder();
+                    _filesBrowserView.BackFolder();
                 }
             });
         }
@@ -346,22 +346,51 @@ namespace CDJPlayer.Models
             var task = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 if (e.Edge == GpioPinEdge.FallingEdge)
-            {
-                _effectsView.PressButtonC();
-            }
+                {
+                    _effectsView.PressButtonC();
+                }
             });
         }
 
-        // EFX MODE 
+        // EFX MODE
+        DispatcherTimer timerModeView = new DispatcherTimer();
         private void ButtonHold_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs e)
         {
             var task = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
+                timerModeView.Interval = TimeSpan.FromMilliseconds(1000);
+                timerModeView.Tick += timerModeView_Tick;
+
                 if (e.Edge == GpioPinEdge.FallingEdge)
                 {
-                    _effectsView.ChangeMode();
+                    timerModeView.Start();
+                    switch (_filesBrowserView._browserViewMode)
+                    {
+                        case BrowserViewMode.FullView:
+                            _filesBrowserView.ChangeViewMode(BrowserViewMode.FullViewAndInfo);
+                            _effectsView.Show(false);
+                            break;
+                        case BrowserViewMode.FullViewAndInfo:
+                            _filesBrowserView.ChangeViewMode(BrowserViewMode.SmallView);
+                            _effectsView.Show(true);
+                            break;
+                        case BrowserViewMode.SmallView:
+                            _filesBrowserView.ChangeViewMode(BrowserViewMode.FullView);
+                            _effectsView.Show(false);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    timerModeView.Stop();
                 }
             });
+        }
+        private void timerModeView_Tick(object sender, object e)
+        {
+            _effectsView.ChangeMode();
         }
 
         // AUTO CUE 
@@ -376,6 +405,10 @@ namespace CDJPlayer.Models
                 if (e.Edge == GpioPinEdge.FallingEdge)
                 {
                     timerAutoCue.Start();
+                    if (_playerView._timeMode == TimeMode.Remaining)
+                        _playerView._timeMode = TimeMode.Elapsed;
+                    else
+                        _playerView._timeMode = TimeMode.Remaining;
                 }
                 else
                 {
@@ -388,10 +421,6 @@ namespace CDJPlayer.Models
         {
             _playerView.SetAutoCue();
             timerAutoCue.Stop();
-            if (_playerView._timeMode == TimeMode.Remaining)
-                _playerView._timeMode = TimeMode.Elapsed;
-            else
-                _playerView._timeMode = TimeMode.Remaining;
         }
 
         // MASTER TEMPO
@@ -420,16 +449,16 @@ namespace CDJPlayer.Models
             {
                 if (jogB.Read() == GpioPinValue.Low)
                 {
-                        EncoderTurnRight();
+                    EncoderTurnRight();
                 }
                 else
                 {
-                        EncoderTurnLeft();
+                    EncoderTurnLeft();
                 }
             }
             encoderALast = encoderA;
         }
-        
+
         int countL = 0;
 
         private void EncoderTurnLeft()
@@ -493,6 +522,8 @@ namespace CDJPlayer.Models
 
         #endregion
 
+        #region Browser encoder
+
         private GpioPinValue encALast = GpioPinValue.Low;
         private void BrowserEncoderRotary_ValueChange(GpioPin sender, GpioPinValueChangedEventArgs args)
         {
@@ -525,6 +556,8 @@ namespace CDJPlayer.Models
                 }
             });
         }
+
+        #endregion
 
         #region I2c Tempo Value
 

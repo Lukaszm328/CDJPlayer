@@ -1,9 +1,19 @@
 # CDJPlayer
 Upgrade your cd player on USB.
+
 ![Freelancer Preview](https://github.com/Lukaszm328/CDJPlayer/blob/main/Instructions/images/cdj100.jpg?raw=true)
 
 # App
 ![Freelancer Preview](https://github.com/Lukaszm328/CDJPlayer/blob/main/Instructions/images/cdjplayer.png?raw=true)
+
+## Hardware
+- Pioneer CDJ 100
+- Raspberry Pi 3+
+- ADC 5v
+
+## Software
+- Windows 10 IoT 
+- CDJPlayer
 
 All instructions [here](https://github.com/Lukaszm328/CDJPlayer/blob/main/Instructions)
 

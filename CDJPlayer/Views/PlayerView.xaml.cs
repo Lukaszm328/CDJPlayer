@@ -272,7 +272,6 @@ namespace CDJPlayer.Views
                 case PlayerState.Loaded:
                     if (_cuePoint?.CuePointStatus == CuePointStatus.Created)
                     {
-                            Debug.WriteLine("TUTAJ");
                         Seek(_cuePoint.CuePointTime);
                     }
                     else
@@ -322,7 +321,14 @@ namespace CDJPlayer.Views
                     else if (_player.Position != _cuePoint.CuePointTime)
                     {
                         ResetCuePoint();
+                        if (_pausedSeek)
+                        {
                         _cuePoint.SetCuePointTime(_pausedTime);
+                        }
+                        else
+                        {
+                            _cuePoint.SetCuePointTime(_player.Position);
+                        }
                         DrawCuePoint();
                     }
                     _pausedSeek = false;
@@ -539,11 +545,11 @@ namespace CDJPlayer.Views
             switch (turn)
             {
                 case JogTurn.Left:
-                    Forward(TimeSpan.FromMilliseconds(-Settings.seekTime));
+                    Forward(TimeSpan.FromMilliseconds(Settings.seekTime));
 
                     break;
                 case JogTurn.Right:
-                    Forward(TimeSpan.FromMilliseconds(Settings.seekTime));
+                    Forward(TimeSpan.FromMilliseconds(-Settings.seekTime));
                     break;
                 default:
                     break;

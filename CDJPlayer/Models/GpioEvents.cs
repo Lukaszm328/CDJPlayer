@@ -353,17 +353,12 @@ namespace CDJPlayer.Models
         }
 
         // EFX MODE
-        DispatcherTimer timerModeView = new DispatcherTimer();
         private void ButtonHold_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs e)
         {
             var task = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                timerModeView.Interval = TimeSpan.FromMilliseconds(1000);
-                timerModeView.Tick += timerModeView_Tick;
-
                 if (e.Edge == GpioPinEdge.FallingEdge)
                 {
-                    timerModeView.Start();
                     switch (_filesBrowserView._browserViewMode)
                     {
                         case BrowserViewMode.FullView:
@@ -381,10 +376,6 @@ namespace CDJPlayer.Models
                         default:
                             break;
                     }
-                }
-                else
-                {
-                    timerModeView.Stop();
                 }
             });
         }

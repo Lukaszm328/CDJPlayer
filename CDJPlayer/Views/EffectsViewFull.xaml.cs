@@ -89,7 +89,7 @@ namespace CDJPlayer.Views
                     EffectLoopMode.Background = new SolidColorBrush(Colors.Blue);
                     _currentEfxMode = EffectMode.Loop;
                     efxEffectView.Opacity = 0.3f;
-                    cueEffectView.Opacity = 0.3f;
+                    cueEffectView.Opacity = 0.5f;
                     loopEffectView.Opacity = 1f;
                     LoopHeader.Background = new SolidColorBrush(Colors.White);
                     LoopText.Foreground = new SolidColorBrush(Colors.Black);
@@ -105,7 +105,7 @@ namespace CDJPlayer.Views
                     EffectsMode.Background = new SolidColorBrush(Colors.Blue);
                     _currentEfxMode = EffectMode.Effects;
                     efxEffectView.Opacity = 1f;
-                    cueEffectView.Opacity = 0.3f;
+                    cueEffectView.Opacity = 0.5f;
                     loopEffectView.Opacity = 0.3f;
                     LoopHeader.Background = new SolidColorBrush(Colors.Black);
                     LoopText.Foreground = new SolidColorBrush(Colors.White);
@@ -305,6 +305,24 @@ namespace CDJPlayer.Views
         public void PressButtonC()
         {
             Action(EfxButton.ButtonC);
+        }
+
+        private void efxModeLoop_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            _currentEfxMode = EffectMode.Effects;
+            ChangeMode();
+        }
+
+        private void efxModeHotCue_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            _currentEfxMode = EffectMode.Loop;
+            ChangeMode();
+        }
+
+        private void efxModeEffects_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            _currentEfxMode = EffectMode.HotCue;
+            ChangeMode();
         }
     }
 }
